@@ -1,0 +1,1149 @@
+focus_tree = {
+    id = alt_bhutan_focus
+    
+    country = {
+        factor = 0
+        
+        modifier = {
+            add = 20
+            
+            tag = BHU
+        }
+    }
+	
+	default = yes
+	continuous_focus_position = { x = 50 y = 1520 }
+	
+	
+focus = {
+   id = BHU_form_new_government     # Localized to give the focus its name
+   icon = GFX_goal_generic_trade
+    
+
+    
+    
+    x = 5   # The x position of the focus in the National Focus window
+    y = 0   # The y position of the focus in the National Focus window
+    
+    cost = 5   #  1 = 7 --- Ändern 
+    
+    # Stops the focus from cancelling if the available triggers become invalid.
+    cancel_if_invalid = no
+    
+    # Makes this focus available whilst capitulated
+    available_if_capitulated = yes
+    
+    # Effect to execute on focus completion
+    completion_reward = {
+        add_political_power = 300
+		add_stability = 0.15
+    }
+
+    # Determines the weight the AI uses when picking its next focus
+    ai_will_do = {
+        factor = 10.0
+        
+        
+    }
+    }
+
+focus = {
+	
+	
+	id = BHU_become_an_illuminati
+	icon = GFX_goal_tfv_smiling_buddha
+	x = -3
+	y = 1
+	relative_position_id = BHU_form_new_government
+	cost = 20
+	prerequisite = {
+        focus = BHU_form_new_government # Can add multiple
+    }
+	
+	mutually_exclusive = {
+	focus = BHU_NWO_member_gain
+	}
+		
+	available = {
+	is_in_faction = no
+	}
+	
+	select_effect = {
+	
+	add_political_power = 150 
+	
+	
+	}
+	
+	
+	completion_reward = {
+	
+
+	kill_country_leader = yes 
+	create_country_leader = {
+	name = "Edward Mandell"
+	desc = "POLITICS_EDWARD_MANDELL_DESC"
+	picture = "Portrait_Edward_Mandell.dds"
+	expire = "1965.1.1"
+	ideology = despotism
+	traits = {
+		
+	}
+}
+	set_politics = {
+    parties = {
+		democratic = { 
+			popularity = 0
+		}
+
+		fascism = {
+			popularity = 0
+		}
+		
+		communism = {
+			popularity = 0
+		}
+		
+		neutrality = { 
+			popularity = 100
+		}
+	}
+	
+	ruling_party = neutrality
+}
+		
+	
+	}
+
+
+
+}
+
+focus = {
+	id = BHU_NWO_member_gain
+	icon = GFX_goal_tfv_sever_ties_with_uk
+	x = 3
+	y = 1 
+	relative_position_id = BHU_form_new_government
+	cost = 20
+	
+	prerequisite = {
+        focus = BHU_form_new_government 
+    
+	}
+	
+	mutually_exclusive = {
+	focus = BHU_become_an_illuminati
+	
+	}
+	
+	available = {
+	is_in_faction = no
+	
+	}
+	
+	select_effect = {
+	
+	add_political_power = 150 
+	
+	
+	}
+	
+		completion_reward = {
+	
+	kill_country_leader = yes 
+	
+	create_country_leader = {
+	name = "Mimon Baraka"
+	desc = "POLITICS_MIMON_BARAKA_DESC"
+	picture = "Portrait_Mimon_Baraka.dds"
+	expire = "1965.1.1"
+	ideology = despotism
+	traits = {
+		
+	}
+}
+	set_politics = {
+    parties = {
+		democratic = { 
+			popularity = 0
+		}
+
+		fascism = {
+			popularity = 0
+		}
+		
+		communism = {
+			popularity = 0
+		}
+		
+		neutrality = { 
+			popularity = 100
+		}
+	}
+	
+	ruling_party = neutrality
+	}
+	
+	
+	}
+	
+	
+}
+
+######NWO 
+
+## INDUSTRIE 
+
+focus = {
+id = BHU_NWO_Industrie
+icon = GFX_goal_generic_construct_civ_factory
+x = -1
+y = 1
+relative_position_id = BHU_NWO_member_gain
+cost = 7.2 #7.2
+
+prerequisite = {focus = BHU_NWO_member_gain}
+
+completion_reward = {
+add_offsite_building = {
+type = industrial_complex
+level = 5
+}
+add_offsite_building = {
+type = arms_factory
+level = 5
+}
+}
+}
+
+focus = {
+id = BHU_NWO_Infrastructure
+icon = GFX_goal_generic_construct_infrastructure
+x = 1
+y = 1
+relative_position_id = BHU_NWO_member_gain
+cost = 7.2 #7.2
+
+prerequisite={focus = BHU_NWO_member_gain}
+
+completion_reward = {
+324 = {
+add_extra_state_shared_building_slots = 5
+add_building_construction = {
+
+type = infrastructure
+level = 5
+instant_build = yes
+}
+}
+}
+}
+######
+focus = {
+id = Establish_NWO 
+icon = GFX_goal_tfv_can_forced_quebec_conscription
+x = -1
+y = 1
+relative_position_id = BHU_NWO_Infrastructure
+cost = 10
+prerequisite = {
+focus = BHU_NWO_Industrie
+focus = BHU_NWO_Infrastructure
+}
+select_effect = {
+
+add_manpower = 1500
+add_ideas = {
+bhutan_stronk
+}
+}
+completion_reward = {
+
+create_faction = NWO_GMBH
+
+annex_country ={
+target = TIB
+transfer_troops = yes
+}
+
+set_party_name = {
+ideology = neutrality 
+long_name = NeueWeltOrdnungAgenda
+name = NWO 
+}
+
+}
+
+
+
+
+}
+
+
+######Illuminati 
+
+focus = {
+
+	id = BHU_Illu_Pol
+	icon = GFX_goal_generic_dangerous_deal
+	x = 0
+	y = 1
+	relative_position_id = BHU_become_an_illuminati
+	cost = 10 
+	
+	prerequisite = {
+	focus = BHU_become_an_illuminati
+	}
+	
+	completion_reward = {
+	add_manpower = 10000
+	set_research_slots = 3
+	puppet = TIB  
+	create_faction = Freimaurer
+	BHU = {
+	add_to_faction = ALB
+	}
+	add_threat = 3.5
+	}
+
+}
+######################
+
+
+focus = {
+id = BHU_Industry_Il
+icon = GFX_goal_generic_construct_civ_factory
+cost = 10
+x = -1
+y = 1
+
+relative_position_id = BHU_Illu_Pol
+prerequisite ={
+focus = BHU_Illu_Pol}
+
+completion_reward={
+324 = {
+add_extra_state_shared_building_slots = 2
+add_building_construction ={
+type = industrial_complex
+level = 2
+instant_build = yes 
+}
+
+}
+
+}
+
+available_if_capitulated = no 
+}
+
+
+focus = {
+id = BHU_Military_Il
+icon = GFX_goal_rhineland
+cost = 10
+x = 1
+y = 1
+relative_position_id = BHU_Illu_Pol
+prerequisite = {focus = BHU_Illu_Pol}
+
+completion_reward = {
+
+324 = {
+add_extra_state_shared_building_slots = 2
+add_building_construction ={
+type = arms_factory
+level = 2
+instant_build = yes 
+}
+}
+}
+}
+
+focus = {
+id = BHU_Expand_Population
+icon = GFX_focus_chi_one_china_policy
+cost = 10
+x = 15
+y = 0
+
+available_if_capitulated = yes
+
+completion_reward = {
+
+add_manpower = 15000
+
+modifier = {
+conscription = 0.05
+}
+}
+}
+
+focus = {
+id = BHU_Integrate_More
+icon = GFX_focus_generic_little_entente
+x = 0
+y = 1
+relative_position_id = BHU_Expand_Population
+cost = 10
+prerequisite = {focus = BHU_Expand_Population}
+completion_reward = {
+add_manpower = 20000
+conscription = 0.05
+}
+}
+
+focus = {
+
+id = BHU_New_Generals
+icon = GFX_focus_generic_strike_at_democracy1
+x = 20
+y = 0
+cost = 5
+
+completion_reward = {
+
+create_corps_commander = {
+	name = "Dennis Ingo Schulz"
+	picture = "Portrait_Dennis_Ingo_Schulz.dds"
+	traits = { trickster brilliant_strategist }
+	skill = 4
+	attack_skill = 4
+	defense_skill = 2
+	planning_skill = 4
+	logistics_skill = 4
+}
+
+
+
+}
+
+}
+
+focus = {
+
+id = BHU_New_Generals_Expanded
+icon = GFX_focus_generic_strike_at_democracy1
+x = 0
+y = 1
+relative_position_id = BHU_New_Generals
+prerequisite = {focus = BHU_New_Generals}
+cost = 10
+
+completion_reward = {
+
+create_corps_commander = {
+	name = "Yusuf Alyaz"
+	picture = "Portrait_Yusuf_Alyaz.dds"
+	traits = { trickster brilliant_strategist }
+	skill = 2
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 4
+}
+create_corps_commander = {
+	name = "Carlos"
+	picture = "Portrait_Carlos.dds"
+	traits = { trickster brilliant_strategist }
+	skill = 2
+	attack_skill = 4
+	defense_skill = 2
+	planning_skill = 1
+	logistics_skill = 1
+}
+create_corps_commander = {
+	name = "Neder Neumann"
+	picture = "Portrait_Crazy.dds"
+	traits = { trickster brilliant_strategist }
+	skill = 4
+	attack_skill = 4
+	defense_skill = 2
+	planning_skill = 4
+	logistics_skill = 4
+}
+create_corps_commander = {
+	name = "Gerd Bennewirtz"
+	picture = "Portrait_Gerd_Bennewirtz.dds"
+	traits = { trickster brilliant_strategist }
+	skill = 4
+	attack_skill = 4
+	defense_skill = 4
+	planning_skill = 4
+	logistics_skill = 4
+}
+}
+}
+
+#############
+
+focus = {
+id = BHU_Factory_Addition
+icon = GFX_goal_generic_construct_civ_factory
+cost = 15
+x = 25
+y = 0
+
+completion_reward={
+324 = {
+add_extra_state_shared_building_slots = 2
+add_building_construction ={
+type = industrial_complex
+level = 2
+instant_build = yes 
+}
+}
+}
+}
+
+focus = {
+id = BHU_Factory_Addition2
+icon = GFX_goal_generic_construct_civ_factory
+cost = 15
+x = 0
+y = 1
+relative_position_id = BHU_Factory_Addition
+prerequisite = {focus = BHU_Factory_Addition}
+completion_reward={
+324 = {
+add_extra_state_shared_building_slots = 2
+add_building_construction ={
+type = industrial_complex
+level = 2
+instant_build = yes 
+}
+}
+}
+}
+
+focus = {
+id = BHU_Factory_Addition3
+icon = GFX_goal_generic_construct_civ_factory
+cost = 15
+x = 0
+y = 1
+relative_position_id = BHU_Factory_Addition2
+prerequisite = {focus = BHU_Factory_Addition2}
+completion_reward={
+324 = {
+add_extra_state_shared_building_slots = 2
+add_building_construction ={
+type = industrial_complex
+level = 2
+instant_build = yes 
+}
+}
+}
+}
+
+focus = {
+id = BHU_Factory_Addition4
+icon = GFX_goal_generic_construct_civ_factory
+cost = 15
+x = 0
+y = 1
+relative_position_id = BHU_Factory_Addition3
+prerequisite = {focus = BHU_Factory_Addition3}
+completion_reward={
+324 = {
+add_extra_state_shared_building_slots = 2
+add_building_construction ={
+type = industrial_complex
+level = 2
+instant_build = yes 
+}
+}
+}
+}
+
+focus = {
+id = BHU_MFactory_Addition
+icon = GFX_goal_generic_construct_mil_factory
+cost = 15
+x = 30
+y = 0
+
+completion_reward={
+324 = {
+add_extra_state_shared_building_slots = 2
+add_building_construction ={
+type = arms_factory
+level = 2
+instant_build = yes 
+}
+}
+}
+}
+
+focus = {
+id = BHU_MFactory_Addition2
+icon = GFX_goal_generic_construct_mil_factory
+cost = 15
+x = 0
+y = 1
+relative_position_id = BHU_MFactory_Addition
+prerequisite = {focus = BHU_MFactory_Addition}
+completion_reward={
+324 = {
+add_extra_state_shared_building_slots = 2
+add_building_construction ={
+type = arms_factory
+level = 2
+instant_build = yes 
+}
+}
+}
+}
+
+focus = {
+id = BHU_MFactory_Addition3
+icon = GFX_goal_generic_construct_mil_factory
+cost = 15
+x = 0
+y = 1
+relative_position_id = BHU_MFactory_Addition2
+prerequisite = {focus = BHU_MFactory_Addition2}
+completion_reward={
+324 = {
+add_extra_state_shared_building_slots = 2
+add_building_construction ={
+type = arms_factory
+level = 2
+instant_build = yes 
+}
+}
+}
+}
+
+focus = {
+id = BHU_MFactory_Addition4
+icon = GFX_goal_generic_construct_mil_factory
+cost = 15
+x = 0
+y = 1
+relative_position_id = BHU_MFactory_Addition3
+prerequisite = {focus = BHU_MFactory_Addition3}
+completion_reward={
+324 = {
+add_extra_state_shared_building_slots = 2
+add_building_construction ={
+type = arms_factory
+level = 2
+instant_build = yes 
+}
+}
+}
+}
+
+focus = {
+id = BHU_Fascism
+icon = GFX_focus_RAJ_seek_help_from_germany
+cost = 5
+x = 0
+y = 2
+relative_position_id = BHU_Illu_Pol
+
+prerequisite = {
+focus = BHU_Industry_Il
+focus = Establish_NWO
+}
+
+mutually_exclusive = {focus = BHU_Communism}
+
+
+available = {
+fascism > 0.4
+}
+
+cancel = {
+has_government = communism
+}
+
+
+bypass = {
+has_government = fascism
+}
+
+completion_reward = {add_political_power = 150
+
+add_popularity = {
+    ideology = fascism
+    popularity = 0.2
+}
+}
+}
+
+focus = {
+id = BHU_Communism 
+cost = 5
+icon = GFX_focus_prc_agrarian_socialism
+x = 0
+y = 1
+relative_position_id = Establish_NWO
+mutually_exclusive = {focus = BHU_Fascism}
+
+available = {
+communism > 0.4
+}
+
+cancel = {
+has_government = fascism
+}
+
+bypass = {
+has_government = communism
+}
+
+completion_reward = {add_political_power = 150
+
+add_popularity = {
+    ideology = communism
+    popularity = 0.2
+}
+}
+}
+##### COMMIE TREE
+
+focus = {
+id = BHU_Communist_Regieme
+icon = GFX_goal_tfv_burn_the_royal_portraits
+relative_position_id = BHU_Communism
+x = 0
+y = 1
+prerequisite = {focus = BHU_Communism}
+cost = 2
+cancel_if_invalid = yes
+
+available = {
+has_government = communism
+}
+
+completion_reward = {
+add_political_power = 100 
+
+}
+}
+
+focus = {
+id = BHU_Communist_Industry_Part1
+icon = GFX_goal_tfv_burn_the_royal_portraits
+cost = 10
+x = -2 
+y = 1
+relative_position_id = BHU_Communist_Regieme
+prerequisite = {focus = BHU_Communist_Regieme}
+
+cancel_if_invalid = yes
+
+available = {
+has_government = communism
+}
+
+completion_reward = {
+
+add_offsite_building={
+type = industrial_complex
+level = 2
+}
+
+
+}
+
+}
+
+focus = {
+id = BHU_Communist_Industry_Part2
+icon = GFX_focus_prc_social_democracy
+x = 0
+y = 1
+cost = 5
+relative_position_id = BHU_Communist_Industry_Part1
+prerequisite = {focus = BHU_Communist_Industry_Part1}
+
+cancel_if_invalid = yes
+
+available = {
+has_government = communism
+}
+
+completion_reward = {
+
+add_offsite_building={
+type = industrial_complex
+level = 2
+}
+
+
+}
+
+}
+
+focus = {
+id = BHU_Communist_Industry_WorkForce
+icon = GFX_focus_generic_support_the_left_right
+cost = 5
+x = 0
+y = 1
+relative_position_id = BHU_Communist_Industry_Part2
+prerequisite = {focus = BHU_Communist_Industry_Part2}
+
+cancel_if_invalid = yes
+
+available = {
+has_government = communism
+}
+
+completion_reward = {
+add_ideas = {BHU_Work_Force}
+add_manpower = 150
+}
+}
+
+focus = {
+id = BHU_Communist_Politics
+icon = GFX_goal_generic_intelligence_exchange
+x = 0 
+y = 1
+relative_position_id = BHU_Communist_Regieme
+prerequisite = {focus = BHU_Communist_Regieme}
+
+cost = 15
+
+available = {
+has_completed_focus = BHU_Expand_Population
+has_government = communism
+}
+
+cancel_if_invalid = yes
+completion_reward = {
+
+diplomatic_relation = {
+country = NEP
+relation = non_aggression_pact
+active = yes
+}
+}
+}
+
+focus = {
+id = BHU_Communist_Politics_Form_Alliance
+icon = GFX_goal_generic_major_alliance
+x = 0 
+y = 1 
+relative_position_id = BHU_Communist_Politics
+prerequisite = {focus = BHU_Communist_Politics}
+cost = 10 
+completion_reward = {
+
+add_political_power = 50 
+diplomatic_relation = {
+    country = SOV
+    relation = non_aggression_pact
+    active = yes
+}
+}
+
+available = {
+has_government = communism
+}
+
+cancel_if_invalid = yes
+
+
+
+cancel = {
+
+has_war_with = SOV 
+}
+
+}
+
+focus = {
+id = BHU_Communist_Politics_Join_Commie
+icon = GFX_focus_prc_agrarian_socialism
+x = 0
+y = 1
+cost = 20
+relative_position_id = BHU_Communist_Politics_Form_Alliance
+prerequisite = {focus = BHU_Communist_Politics_Form_Alliance}
+available = {
+has_army_manpower = {
+size > 10000
+}
+has_government = communism
+}
+
+cancel_if_invalid = yes
+
+completion_reward = {
+leave_faction = yes
+SOV = {
+add_to_faction = BHU
+}
+}
+}
+
+focus = {
+id = BHU_Communist_Influence
+icon = GFX_goal_generic_propaganda
+relative_position_id = BHU_Communist_Regieme
+x = 2
+y = 1
+prerequisite = {focus = BHU_Communist_Regieme}
+
+cancel_if_invalid = yes
+
+available = {
+has_government = communism
+}
+
+completion_reward = {
+add_threat = 1.5
+add_political_power = 150
+}
+
+}
+
+focus = {
+id = BHU_Communist_Influence_Part2
+icon = GFX_focus_generic_tank_production
+x = 0 
+y = 1 
+prerequisite = {focus = BHU_Communist_Influence}
+relative_position_id = BHU_Communist_Influence
+available = {
+has_political_power > 150
+has_government = communism
+}
+cancel_if_invalid = yes
+select_effect = {
+add_political_power = -150
+}
+
+completion_reward = {
+add_war_support = 0.10
+}
+}
+
+focus = {
+id = BHU_Communist_Influence_Part3
+icon = GFX_focus_ger_break_anglo_french_colonial_hegemony
+x = 0 
+y = 1
+relative_position_id = BHU_Communist_Influence_Part2
+cost = 30
+prerequisite = {focus = BHU_Communist_Influence_Part2}
+available = {
+has_completed_focus = BHU_Expand_Population
+has_completed_focus = BHU_New_Generals_Expanded
+has_government = communism
+}
+
+cancel_if_invalid = yes
+
+completion_reward = {
+add_political_power = 150
+add_war_support = 0.15
+add_manpower = 1000
+create_wargoal = {
+type = puppet_wargoal_focus
+target = RAJ
+}
+
+RAJ = {
+start_civil_war = {
+ruling_party = communism 
+ideology = ROOT
+size = 0.8
+capital = 432
+states = {
+431
+430
+432
+435 
+426
+288
+640
+}
+}
+}
+}
+}
+
+######Fascist TREE 
+
+focus = {
+cost = 10
+id = BHU_Fascist_Political
+icon = GFX_focus_ger_oppose_hitler 
+x = -1
+y = 1
+relative_position_id = BHU_Fascism
+available = {
+has_government = fascism
+}
+prerequisite = {focus = BHU_Fascism}
+completion_reward = {
+diplomatic_relation = {
+    country = GER
+    relation = non_aggression_pact
+    active = yes
+}
+add_political_power = 150
+}
+}
+
+focus = {
+cost = 15
+id = BHU_Fascist_Political_GER
+icon = GFX_goal_generic_alliance
+x = 0
+y = 1
+relative_position_id = BHU_Fascist_Political
+prerequisite = {focus = BHU_Fascist_Political}
+
+available = {
+has_government = fascism
+has_army_manpower = {
+size > 15000
+}
+}
+
+bypass = {
+is_in_faction_with = GER
+}
+
+completion_reward = {
+add_political_power = 50
+GER = {
+add_to_faction = BHU
+}
+}
+
+
+
+}
+
+focus = {
+cost = 20
+id = BHU_Fascist_Political_GER_Sup1
+icon = GFX_goal_generic_army_tanks
+x = -2
+y = 1
+prerequisite = {focus = BHU_Fascist_Political_GER}
+relative_position_id = BHU_Fascist_Political_GER
+mutually_exclusive = {
+focus = BHU_Fascist_Political_GER_Sup2
+}
+available = {
+has_government = fascism
+}
+cancel_if_invalid = yes
+completion_reward = {
+
+add_equipment_to_stockpile = {
+    type = light_tank_equipment
+    amount = 500
+    producer = GER
+}
+
+
+
+}
+}
+
+focus = {
+cost = 20
+id = BHU_Fascist_Political_GER_Sup2
+icon = GFX_goal_generic_army_tanks
+x = 2
+y = 1
+relative_position_id = BHU_Fascist_Political_GER
+prerequisite = {focus = BHU_Fascist_Political_GER}
+mutually_exclusive = {
+focus = BHU_Fascist_GER_Sup1
+}
+available = {
+has_government = fascism
+}
+cancel_if_invalid = yes
+
+completion_reward = {
+
+add_equipment_to_stockpile = {
+    type = infantry_equipment
+    amount = 1500
+    producer = GER
+}
+
+
+
+}
+}
+###Soviet Equipment
+focus = {
+cost = 20
+id = BHU_COM_Sup1
+icon = GFX_goal_generic_military_sphere
+x = 2
+y = 1
+relative_position_id = BHU_Communist_Politics_Join_Commie
+prerequisite = {focus = BHU_Communist_Politics_Join_Commie}
+mutually_exclusive = {
+focus = BHU_COM_Sup2
+}
+available = {
+has_government = communism
+}
+cancel_if_invalid = yes
+
+completion_reward = {
+
+add_equipment_to_stockpile = {
+    type = infantry_equipment_0
+    amount = 1000
+    producer = SOV
+}
+add_equipment_to_stockpile = {
+    type = anti_tank_equipment_1
+    amount = 250
+    producer = SOV
+}
+
+
+}
+}
+
+focus = {
+cost = 20
+id = BHU_COM_Sup2
+icon = GFX_goal_generic_small_arms
+x = -2
+y = 1
+relative_position_id = BHU_Communist_Politics_Join_Commie
+prerequisite = {focus = BHU_Communist_Politics_Join_Commie}
+mutually_exclusive = {
+focus = BHU_COM_Sup1
+}
+available = {
+has_government = communism
+}
+cancel_if_invalid = yes
+
+completion_reward = {
+
+add_equipment_to_stockpile = {
+    type = infantry_equipment_0
+    amount = 2500
+    producer = SOV
+}
+}
+}
+############
+
+
+
+
+
+}
